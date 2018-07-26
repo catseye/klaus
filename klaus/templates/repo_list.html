@@ -22,7 +22,7 @@
       >
         <div class=name>{{ repo.name }}</div>
         {% if description %}
-          <div class=description>{{ description }}</div>
+          <div class=description>{{ description|safe }}</div>
         {% endif %}
         <div class=last-updated>
         {% if last_updated_at is not none %}
