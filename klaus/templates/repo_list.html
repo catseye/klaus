@@ -15,23 +15,23 @@
     {% set last_updated_at = repo.get_last_updated_at() %}
     {% set description = repo.get_description() %}
     <li>
-      <a
-        {% if last_updated_at %}
-          href="{{ url_for('index', repo=repo.name) }}"
-        {% endif %}
-      >
-        <div class=name>{{ repo.name }}</div>
-        {% if description %}
-          <div class=description>{{ description|safe }}</div>
-        {% endif %}
-        <div class=last-updated>
-        {% if last_updated_at is not none %}
-          last updated {{ last_updated_at|timesince }}
-        {% else %}
-          no commits yet
-        {% endif %}
-        </div>
-      </a>
+      <div class=name>
+        <a
+          {% if last_updated_at %}
+            href="{{ url_for('index', repo=repo.name) }}"
+          {% endif %}
+        >{{ repo.name }}</a>
+      </div>
+      {% if description %}
+        <div class=description>{{ description|safe }}</div>
+      {% endif %}
+      <div class=last-updated>
+      {% if last_updated_at is not none %}
+        last updated {{ last_updated_at|timesince }}
+      {% else %}
+        no commits yet
+      {% endif %}
+      </div>
     </li>
   {% endfor %}
 </ul>
