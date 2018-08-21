@@ -279,7 +279,8 @@ class IndexView(TreeViewMixin, BaseRepoView):
             })
         else:
             self.context.update({
-                'base_href': None,
+                # TODO This isn't sufficient. We'll need to rewrite links instead.
+                #'base_href': None,
                 'is_markup': markup.can_render(readme_filename),
                 'rendered_code': highlight_or_render(
                     force_unicode(readme_data),
