@@ -36,7 +36,7 @@ def repo_list():
         sort_key = lambda repo: repo.get_last_updated_at()
         reverse = True
     else:
-        sort_key = lambda repo: repo.name
+        sort_key = lambda repo: repo.name.lower()
         reverse = False
     repos = sorted(current_app.repos.values(), key=sort_key, reverse=reverse)
     return render_template('repo_list.html', repos=repos, base_href=None)
